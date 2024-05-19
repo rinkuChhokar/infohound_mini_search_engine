@@ -1,4 +1,4 @@
-<div class="flex justify-center m-auto mt-20">
+<div class="flex justify-center m-auto mt-20" id="search-section">
   <h2
     class="md:text-3xl text-3xl md:leading-10 font-extrabold text-[#333] mb-4"
   >
@@ -138,9 +138,6 @@
       body: JSON.stringify({ searchquery: searchQuery }),
     })
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("An error occurred");
-        }
         return res.json();
       })
       .then((data) => {
@@ -157,6 +154,12 @@
           search_btn.innerText = "Search";
           search_btn.disabled = false;
         } else {
+          Swal.fire({
+            title: '',
+            text: data.message,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
           console.log(data.message);
           loader.classList.add("hidden");
           search_btn.innerText = "Search";

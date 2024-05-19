@@ -79,7 +79,8 @@ def contact_us(request):
 
 def about_us(request):
     context = {
-        'active_link': 'about_us'
+        'active_link': 'about_us',
+        'number': [1,1,1,1]
     }
 
     return render(request, 'about_us.html', context)
